@@ -1,0 +1,73 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
+  height: calc(100vh - 14px);
+}
+#root {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+input {
+  outline: none;
+  border: none;
+}
+.ss {
+  padding-top: 60px;
+}
+.title {
+  font-size: 54px;
+  font-weight: 600;
+  width: 583px;
+  color: white;
+  margin-bottom: 30px;
+}
+.content {
+  font-size: 16px;
+  width: 555px;
+  height: 100px;
+  justify-content: center;
+  text-align: justify;
+  color: white;
+  margin-bottom: 30px;
+}
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 500px;
+  background: linear-gradient(rgb(72, 0, 72, 0.8), rgb(54, 54, 54, 0.8)),
+    url("https://i.ibb.co/L9kY03M/background.jpg"); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(rgba(46, 46, 46, 0.8), rgba(54, 54, 54, 0.8)),
+    url("https://i.ibb.co/L9kY03M/background.jpg"); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size: cover;
+  padding: 0 120px;
+  background-size: 100% 100%;
+  /* object-fit: cover; */
+}
+
+.home-header .header-info button {
+  width: 137px;
+  background-color: #ff4f04;
+  height: 50px;
+  font-weight: 600;
+
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.home-header .header-info button:hover {
+  background-color: #e04502;
+  color: #fff;
+}

@@ -2,6 +2,7 @@ require('env2')('./config.env');
 const { join } = require('path');
 const express = require('express');
 const compression = require('compression');
+const router = require('./router');
 
 const app = express();
 
@@ -13,6 +14,8 @@ app.set('port', PORT || 3000);
 app.disable('x-powered-by');
 
 app.use([compression(), express.urlencoded({ extended: true }), express.json()]);
+
+app.use('/api/v1/', router);
 
 if (NODE_ENV === 'development') {
   app.get('/', (req, res) => {

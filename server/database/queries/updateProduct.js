@@ -1,8 +1,10 @@
 const pool = require('../config/connection');
 
-const deleteProduct = (obj) => pool.query({
-  text: 'UPDATE products SET name = $1, price = $2, image= $3 WHERE id = $4;',
-  values: [obj.id, obj.name, obj.price, obj.image],
+const deleteProduct = ({
+  id, name, price, description, image,
+}) => pool.query({
+  text: 'UPDATE products SET name = $1, price = $2, description = $3, image= $4 WHERE id = $5;',
+  values: [id, name, price, description, image],
 });
 
 module.exports = deleteProduct;

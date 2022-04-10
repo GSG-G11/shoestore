@@ -1,30 +1,23 @@
-require('env2')('.env');
 const { Pool } = require('pg');
+require('env2')('config.env');
 
 const {
   env: { NODE_ENV, DATABASE_URL, DB_URL_DEV },
 } = process;
-
 let connectionString = '';
 let ssl = false;
 
-switch (NODE_ENV) {
-  case 'production':
-    connectionString = DATABASE_URL;
-    ssl = { rejectUnauthorized: false };
-    break;
-  default:
-    connectionString = DB_URL_DEV;
-    break;
+if (NODE_ENV === 'production') {
+  connectionString = DATABASE_URL;
+} else {
+  connectionString = DB_URL_DEV;
+  ssl = { rejectUnauthorized: false };
+}
+if (!DATABASE_URL) {
+  throw new Error('database not found');
 }
 
-if (!connectionString) {
-  throw new Error('NO DATABASE URL');
-}
-
-const connection = new Pool({
+module.exports = new Pool({
   connectionString,
   ssl,
 });
-
-module.exports = connection;

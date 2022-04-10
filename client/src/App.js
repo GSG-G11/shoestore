@@ -1,19 +1,48 @@
 // import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, {Component} from 'react';
+
+import LoginForm from './components/Login/LoginForm';
+import './components/Login/LoginForm.css'
+
 
 import './App.css';
-import Home from './components/Home/home';
-import Ad from './components/Ad/Ad';
 
- const App = () => {
-  return (
+class App extends Component {
+  
+  state = {
+    isLogin: false
+    
+
+  }
+
+
+
+  handleLogin = () => {
+    this.setState((previousState) => ({
+      isLogin: !previousState.isLogin,
+    }));
+  };
+
+
+
+  render() {
+    const {isLogin} = this.state;
+    return(
+      <div>
+      <LoginForm  />
+      </div>
+
+    )
+
+  }
+}
+
+
+      
     // <Router>
-    //   <Header />
     //   <Switch>
     //     <Route exact path='/'>
     //       <Home />
-    //       <div>
-    //         Hi
-    //       </div>
     //     </Route>
 
     //     <Route path='/login'>
@@ -35,13 +64,8 @@ import Ad from './components/Ad/Ad';
     //   </Switch>
     //   <Footer />
     // </Router>
-    <div>
-      <Home />
-    
-      <Ad />
-    </div>
-  );
-}
+  
+
 
 
 export default App;

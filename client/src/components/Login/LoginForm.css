@@ -1,0 +1,48 @@
+.model {
+    position: fixed;
+    width: 30%;
+    height: 40%;
+    overflow: auto; 
+
+}
+
+
+.log-in {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: #fefefe;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(204, 204, 204);
+    position: relative; 
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 5px 0 22px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #f6f7f8;
+    margin-left: 20px;
+    margin-top: 30px;
+
+}   
+
+i {
+    position: absolute;
+    right: 4px;
+    top: 0;
+    font-size: 25px;
+    color: red;
+    cursor: pointer;
+}
+
+
+Button{
+    margin-left: 140px;
+}

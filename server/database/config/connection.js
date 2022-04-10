@@ -1,25 +1,23 @@
 const { Pool } = require('pg');
 require('env2')('config.env');
 
-let DATABASE_URL = '';
+const {
+  env: { NODE_ENV, DATABASE_URL, DB_URL_DEV },
+} = process;
+let connectionString = '';
+let ssl = false;
 
-if (process.env.NODE_ENV === 'test') {
-  DATABASE_URL = process.env.DB_URL_TEST;
-} else if (process.env.NODE_ENV === 'production') {
-  DATABASE_URL = process.env.DATABASE_URL;
+if (NODE_ENV === 'production') {
+  connectionString = DATABASE_URL;
 } else {
-  DATABASE_URL = process.env.DB_URL;
+  connectionString = DB_URL_DEV;
+  ssl = { rejectUnauthorized: false };
 }
 if (!DATABASE_URL) {
   throw new Error('database not found');
 }
 
-const connection = new Pool({
-  connectionString: DATABASE_URL,
-  ssl:
-    process.env.NODE_ENV === 'production'
-      ? { rejectUnauthorized: false }
-      : false,
+module.exports = new Pool({
+  connectionString,
+  ssl,
 });
-
-module.exports = connection;

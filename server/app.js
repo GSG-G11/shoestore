@@ -16,6 +16,8 @@ app.disable('x-powered-by');
 
 app.use([compression(), express.urlencoded({ extended: true }), express.json()]);
 
+app.use('/api/v1/', router);
+
 if (NODE_ENV === 'development') {
   app.get('/', (req, res) => {
     res.json({ message: 'Server is running' });

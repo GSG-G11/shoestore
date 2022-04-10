@@ -2,7 +2,7 @@ const router = require('express').Router();
 const path = require('path');
 const {
   addProduct, getProducts, updateProduct, deleteProduct,
-} = require('../controller/index');
+} = require('../controller');
 
 router.get('/home', (req, res) => {
   res.sendFile(

@@ -1,7 +1,7 @@
-const addProduct = require('./addProductDB');
-const getProducts = require('./getProductsDB');
-const updateProduct = require('./updateProductDB');
-const deleteProduct = require('./deleteProductDB');
+const addProduct = require('./addProduct');
+const getProducts = require('./getProducts');
+const updateProduct = require('./updateProduct');
+const deleteProduct = require('./deleteProduct');
 
 module.exports = {
   addProduct,

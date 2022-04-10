@@ -2,10 +2,8 @@ require('env2')('.env');
 const { Pool } = require('pg');
 
 const {
-  NODE_ENV,
-  DATABASE_URL,
-  DB_URL_DEV,
-} = process.env;
+  env: { NODE_ENV, DATABASE_URL, DB_URL_DEV },
+} = process;
 
 let connectionString = '';
 let ssl = false;

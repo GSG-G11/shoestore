@@ -1,10 +1,18 @@
 // import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import "./App.css";
+import Logo from "./components/header/upperHeader/Logo";
+import SearchBar from "./components/header/upperHeader/SearchBar";
+import CartIcon from "./components/header/upperHeader/CartIcon";
+import LoginButton from "./components/header/upperHeader/LoginButton";
+import "./components/header/upperHeader/upperHeader.css";
+import Dropdwon from "./components/header/downHeader/Dropdown";
+import NavigationMenu from "./components/header/downHeader/NavigationMenu";
 
-import './App.css';
-import Home from './components/Home/home';
-import Ad from './components/Ad/Ad';
+import "./App.css";
+import Home from "./components/Home/home";
+import Ad from "./components/Ad/Ad";
 
- const App = () => {
+const App = () => {
   return (
     // <Router>
     //   <Header />
@@ -36,12 +44,24 @@ import Ad from './components/Ad/Ad';
     //   <Footer />
     // </Router>
     <div>
+      <div className="App">
+        <div className="Header">
+          <div className="upper__header">
+            <Logo />
+            <SearchBar />
+            <CartIcon />
+            <LoginButton />
+          </div>
+          <div className="down__header">
+            <Dropdwon />
+            <NavigationMenu />
+          </div>
+        </div>
+      </div>
       <Home />
-    
       <Ad />
     </div>
   );
-}
-
+};
 
 export default App;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const { deleteProduct } = require('../database/queries');
 
 const deleteProductController = (req, res) => {
@@ -8,3 +9,14 @@ const deleteProductController = (req, res) => {
 };
 
 module.exports = deleteProductController;
+=======
+const deleteProductDB = require('../database/queries/deleteProductDB');
+
+const deleteProduct = (req, res) => {
+  const postId = req.params.id;
+  deleteProductDB(postId);
+  res.redirect('back');
+};
+
+module.exports = deleteProduct;
+>>>>>>> main

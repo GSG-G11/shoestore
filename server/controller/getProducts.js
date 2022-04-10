@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const { getProducts } = require('../database/queries');
 
 const getProductsController = (req, res) => {
@@ -7,3 +8,14 @@ const getProductsController = (req, res) => {
 };
 
 module.exports = getProductsController;
+=======
+const getProductsDB = require('../database/queries/getProductsDB');
+
+const getProducts = (req, res, next) => {
+  getProductsDB()
+    .then((data) => res.json(data.rows))
+    .catch((err) => next(err));
+};
+
+module.exports = getProducts;
+>>>>>>> main

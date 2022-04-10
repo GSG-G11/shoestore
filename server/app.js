@@ -9,6 +9,7 @@ const app = express();
 const {
   env: { PORT, NODE_ENV },
 } = process;
+app.use(router);
 
 app.set('port', PORT || 3000);
 app.disable('x-powered-by');

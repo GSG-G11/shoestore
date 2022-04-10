@@ -1,4 +1,13 @@
 // import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+ import "./App.css";
+import Logo from "./compnents/header/upperHeader/Logo";
+import SearchBar from "./compnents/header/upperHeader/SearchBar";
+import CartIcon from "./compnents/header/upperHeader/CartIcon";
+import LoginButton from "./compnents/header/upperHeader/LoginButton";
+import "./compnents/header/upperHeader/upperHeader.css";
+import Dropdwon from "./compnents/header/downHeader/Dropdown";
+import NavigationMenu from "./compnents/header/downHeader/NavigationMenu";
+
 import React, {Component} from 'react';
 
 import LoginForm from './components/Login/LoginForm';
@@ -29,7 +38,22 @@ class App extends Component {
     const {isLogin} = this.state;
     return(
       <div>
-      <LoginForm  />
+     
+       <div className="App">
+      <div className="Header">
+        <div className="upper__header">
+          <Logo />
+          <SearchBar />
+          <CartIcon />
+          <LoginButton />
+        </div>
+        <div className="down__header">
+          <Dropdwon />
+          <NavigationMenu />
+        </div>
+      </div>
+    </div>
+       <LoginForm  />
       </div>
 
     )
@@ -65,7 +89,4 @@ class App extends Component {
     //   <Footer />
     // </Router>
   
-
-
-
 export default App;

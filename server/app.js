@@ -2,12 +2,14 @@ require('env2')('./config.env');
 const { join } = require('path');
 const express = require('express');
 const compression = require('compression');
+const router = require('./router');
 
 const app = express();
 
 const {
   env: { PORT, NODE_ENV },
 } = process;
+app.use(router);
 
 app.set('port', PORT || 3000);
 app.disable('x-powered-by');

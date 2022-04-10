@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Logo from "./compnents/header/upperHeader/Logo";
+import SearchBar from "./compnents/header/upperHeader/SearchBar";
+import CartIcon from "./compnents/header/upperHeader/CartIcon";
+import LoginButton from "./compnents/header/upperHeader/LoginButton";
+import "./compnents/header/upperHeader/upperHeader.css";
+import Dropdwon from "./compnents/header/downHeader/Dropdown";
+import NavigationMenu from "./compnents/header/downHeader/NavigationMenu";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Header">
+        <div className="upper__header">
+          <Logo />
+          <SearchBar />
+          <CartIcon />
+          <LoginButton />
+        </div>
+        <div className="down__header">
+          <Dropdwon />
+          <NavigationMenu />
+        </div>
+      </div>
     </div>
   );
 }

@@ -49,3 +49,17 @@ html{
     transform: rotate(360deg);
   }
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  border: 1px solid black;
+  width: 100%;
+  display: flex;
+
+}
+
+.footer p{
+  font-size: 14px;
+}
+

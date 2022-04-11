@@ -11,6 +11,7 @@ import NavigationMenu from "./components/header/downHeader/NavigationMenu";
 import "./App.css";
 import Home from "./components/Home/home";
 import Ad from "./components/Ad/Ad";
+import Product from "./components/Product/Product";
 
 const App = () => {
   return (
@@ -44,7 +45,7 @@ const App = () => {
     //   <Footer />
     // </Router>
     <div>
-      <div className="App">
+      {/* <div className="App">
         <div className="Header">
           <div className="upper__header">
             <Logo />
@@ -57,9 +58,10 @@ const App = () => {
             <NavigationMenu />
           </div>
         </div>
-      </div>
-      <Home />
-      <Ad />
+      </div> */}
+      {/* <Home />
+      <Ad /> */}
+      <Product />
     </div>
   );
 };

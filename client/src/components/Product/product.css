@@ -1,0 +1,106 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
+  height: calc(100vh - 14px);
+}
+#root {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.maindiv__porducts {
+  display: flex;
+  flex-direction: row;
+}
+
+.leftside {
+  width: 40%;
+  padding: 2rem 10rem;
+}
+
+
+
+.productimg {
+  width: 270px;
+  height: 330px;
+  border-radius: 10px;
+}
+
+.rightside {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 4rem;
+  justify-content: space-between;
+}
+
+.reviews__wrapper {
+    display: flex;
+    justify-content: space-between;
+    width:50%
+}
+.review__5{
+    font-weight: bold;
+}
+.review__stars >* {
+    margin-left : 0.3rem;
+    color: gold;
+}
+.reviews__num{
+    color: rgb(160, 149, 149);
+}
+/* .rightside  {
+
+} */
+
+.proDesc{
+    font-size: 16px;
+    width: 500px;
+    height: 80px;
+    justify-content: center;
+    text-align: justify;
+    color: black;
+    
+}
+.divider{
+    height: 1px;
+    background-color: #dae0e6;
+    border: none
+}
+.bottomSec{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+text-align: center;
+}
+
+.productPrice{
+    font-size: 28px;
+    font-weight: bold;
+
+}
+
+.addproductcart {
+    width: 155px;
+    background-color: #ff4f04;
+    height: 48px;
+    font-weight: 600;
+  
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .addproductcart:hover {
+    background-color: rgba(224, 69, 2, 0.904);
+    color: #fff;
+  }

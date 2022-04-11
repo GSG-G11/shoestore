@@ -12,10 +12,11 @@
   border: none;
   background-color: #f8f8f8;
   width: 10rem;
-  height: 2.1rem;
+  height: 2.75rem;
 }
 .burger__menu {
   font-size: 0.9rem;
+  margin-right: 15px;
 }
 .select_categories:focus {
   outline: none;

@@ -1,0 +1,16 @@
+.Ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: normal;
+}
+.Ul li {
+  font-weight: lighter;
+  font-size: 0.9rem;
+}
+
+.Ul li:hover {
+  color: #ff4f04;
+  cursor: pointer;
+}

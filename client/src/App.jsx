@@ -7,7 +7,8 @@ import LoginButton from "./components/header/upperHeader/LoginButton";
 import "./components/header/upperHeader/upperHeader.css";
 import Dropdwon from "./components/header/downHeader/Dropdown";
 import NavigationMenu from "./components/header/downHeader/NavigationMenu";
-
+import FooterLeft from "./components/footer/FooterLeft/FooterLeft";
+import FooterRight from "./components/footer/FooterRight/FooterRight";
 import "./App.css";
 import Home from "./components/Home/home";
 import Ad from "./components/Ad/Ad";
@@ -45,7 +46,7 @@ const App = () => {
     //   <Footer />
     // </Router>
     <div>
-      {/* <div className="App">
+       <div className="App">
         <div className="Header">
           <div className="upper__header">
             <Logo />
@@ -58,10 +59,14 @@ const App = () => {
             <NavigationMenu />
           </div>
         </div>
-      </div> */}
-      {/* <Home />
-      <Ad /> */}
+      </div> 
+       <Home />
+      <Ad /> 
       <Product />
+  <div className="footer">
+        <FooterLeft />
+        <FooterRight />
+      </div>
     </div>
   );
 };

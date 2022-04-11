@@ -7,7 +7,8 @@ import LoginButton from "./components/header/upperHeader/LoginButton";
 import "./components/header/upperHeader/upperHeader.css";
 import Dropdwon from "./components/header/downHeader/Dropdown";
 import NavigationMenu from "./components/header/downHeader/NavigationMenu";
-
+import FooterLeft from "./components/footer/FooterLeft/FooterLeft";
+import FooterRight from "./components/footer/FooterRight/FooterRight";
 import "./App.css";
 import Home from "./components/Home/home";
 import Ad from "./components/Ad/Ad";
@@ -60,6 +61,10 @@ const App = () => {
       </div>
       <Home />
       <Ad />
+      <div className="footer">
+        <FooterLeft />
+        <FooterRight />
+      </div>
     </div>
   );
 };

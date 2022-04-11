@@ -12,7 +12,11 @@ import FooterRight from "./components/Footer/FooterRight/FooterRight";
 import "./App.css";
 import Home from "./components/Home/home";
 import Ad from "./components/Ad/Ad";
+
 import Cart from './components/Cart/Cart'
+
+import Product from "./components/Product/Product";
+
 
 const App = () => {
   return (
@@ -73,9 +77,33 @@ const App = () => {
 
     <div>
 
+
       <Cart />
+            
       
-      
+
+       <div className="App">
+        <div className="Header">
+          <div className="upper__header">
+            <Logo />
+            <SearchBar />
+            <CartIcon />
+            <LoginButton />
+          </div>
+          <div className="down__header">
+            <Dropdwon />
+            <NavigationMenu />
+          </div>
+        </div>
+      </div> 
+       <Home />
+      <Ad /> 
+      <Product />
+  <div className="footer">
+        <FooterLeft />
+        <FooterRight />
+      </div>
+
     </div>
   );  
 };

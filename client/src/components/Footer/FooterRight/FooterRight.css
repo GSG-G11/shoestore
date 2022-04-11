@@ -1,18 +1,7 @@
 .footer__right {
     display: flex;
-    width: 70%;
-    justify-content: flex-end;
-
-}
-.footer__1 {
-    width: 30%;
-
-}
-.footer__2 {
-    width: 30%;
-    
-}
-.footer__3 {
-    width: 30%;
-    
+    padding: 0.5rem;
+    justify-content: space-between;
+    width: 60%;
+  
 }

@@ -1,11 +1,10 @@
-.SellerProducts{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 3rem 5rem;
-    height: 20rem;
-    border: 1px solid black;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    align-items: center;
+.SellerProducts {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  padding: 2rem;
+  border: 1px solid black;
+  align-items: center;
 }

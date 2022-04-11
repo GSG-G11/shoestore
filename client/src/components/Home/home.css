@@ -45,7 +45,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 500px;
+  height: 600px;
   background: linear-gradient(rgb(72, 0, 72, 0.8), rgb(54, 54, 54, 0.8)),
     url("https://i.ibb.co/L9kY03M/background.jpg"); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(rgba(46, 46, 46, 0.8), rgba(54, 54, 54, 0.8)),

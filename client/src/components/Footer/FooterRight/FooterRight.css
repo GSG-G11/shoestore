@@ -1,0 +1,7 @@
+.footer__right {
+    display: flex;
+    padding: 0.5rem;
+    justify-content: space-between;
+    width: 60%;
+  
+}

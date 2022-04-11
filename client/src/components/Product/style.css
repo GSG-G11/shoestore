@@ -36,7 +36,7 @@
     max-width: 270px;
 }
 
-img:hover  ~ .product-btn {
+.product-img:hover  ~ .product-btn {
     display: flex;
     flex-direction: column;
     align-items: center;

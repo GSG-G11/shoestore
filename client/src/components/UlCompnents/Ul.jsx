@@ -3,7 +3,6 @@ import "./Ul.css";
 
 class Ul extends Component {
   render(props) {
-    console.log(this.props);
     const { header, li1, li2, li3, li4, li5 } = this.props;
     return (
       <ul className="Ul">

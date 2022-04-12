@@ -14,7 +14,7 @@ export default class CartIcon extends React.Component {
         onClick={() => {}}
         
       />
-      <div className="cart__counter">0</div>
+      {/* <div className="cart__counter">{JSON.parse(localStorage.getItem('products')).length}</div> */}
       </div>
     );
   }

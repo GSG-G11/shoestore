@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import CombinedFooter from "../../components/Footer/CombinedFooter";
 import ProductCard from "../../components/Product/ProductCard";
 import Modal from "../../components/Modal/Modal";
-import axios from 'axios';
+import axios from "axios";
 
 import "./seller.css";
 export default class Seller extends Component {
@@ -10,15 +10,32 @@ export default class Seller extends Component {
     products: [],
   };
 
+
   componentDidMount() {
-    axios
-      .get("/api/v1/getProducts")
-      .then((res) =>{
-        const products = res.data;
-        console.log(res.data);
-       this.setState({products })
-      });
+    axios.get("/api/v1/getProducts").then((res) => {
+      const products = res.data;
+      console.log(res.data);
+      this.setState({ products });
+    });
+
+  // axios
+  //     .post("/api/v1/updateProduct/2", {
+  //       name: "Updated",
+  //       price: 23,
+  //       description: "Flintstone",
+  //       image: "https://i.ibb.co/QcHvYvf/back-Ground-header.jpg",
+      
+
+  //     })
+  //     .then((response) => console.log(response))
+  //     .catch((error) => console.log(error));
+
+  
+    // axios.delete('/api/v1/deleteProduct/11')
+    // .then(() => this.setState({ status: 'Delete successful' }));
+
   }
+
   render() {
     const { products } = this.state;
 
@@ -28,19 +45,16 @@ export default class Seller extends Component {
           <h1>PRODUCTS</h1>
           <Modal />
         </div>
-        
+
         <div className="SellerProducts">
-          { products.map((product) => (
-          <ProductCard
-            name= {product.name}
-            price={product.price}
-            imgLink={product.image}
-            buttons={["Edit", " Delete"]}
-          />
-           ))} 
-
-
-          
+          {products.map((product) => (
+            <ProductCard
+              name={product.name}
+              price={product.price}
+              imgLink={product.image}
+              buttons={["Edit", " Delete"]}
+            />
+          ))}
         </div>
 
         <CombinedFooter />

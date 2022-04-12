@@ -12,12 +12,14 @@ export default class Products extends Component {
     !localStorage.getItem('products') && localStorage.setItem('products', JSON.stringify([]));
 
   }
+  
 
   render() {
     const { products } = this.state;
+    const { changeCart } = this.props;
     console.log(products);
     return <div className='home-products'>
-      {products.map(({id, name, price, image}) => <ProductCard key={id} id={id} name= {name} price={+price} imgLink={image} buttons={'Add to cart'} />)}
+      {products.map(({id, name, price, image}) => <ProductCard changeCart={changeCart}  key={id} id={id} name= {name} price={+price} imgLink={image} buttons={'Add to cart'} />)}
 
     </div>;
   }

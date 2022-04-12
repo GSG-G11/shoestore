@@ -3,45 +3,53 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import "./App.css";
 import Home from "./pages/home";
 import Header from "./components/header";
+import Cart from "./pages/Cart/Cart";
 
 class App extends Component {
 
   state = {
-    inputSearch: ''
+    inputSearch: '',
+    itemsOfCart: 0,
   }
 
   handleSearch = (e) => {
     this.setState({inputSearch: e.target.value})
   }
+  changeCart = (e) => {
+    this.setState({itemsOfCart: e})
+  }
 
 
 
   render() {
-    console.log(this.state);
+    const {changeCart, handleSearch, state:{itemsOfCart} } = this
+
     return (
       <>
-        <Header handleSearch = {this.handleSearch}/>
+        <Header itemsOfCart={itemsOfCart} handleSearch = {handleSearch}/>
         <Router>
           <Switch>
-            <Route exact path='/'>
-              <Home />
-            </Route>
-
-            {/* <Route path='/login'>
-          <Login />
+            
+        {/* <Route  path={'/product/:id'}>
+          <ProductInfo />
         </Route>
 
-        <Route exact path='/cart'>
-          <Cart />
-        </Route>
-
-        <Route exact path='/product'>
+        <Route  path='/product'>
           <Product />
         </Route>
 
-        <Route exact path={'/product/:id'}>
-          <ProductInfo />
+            <Route path='/login'>
+          <Login />
         </Route> */}
+
+        <Route  path='/cart'>
+          <Cart />
+        </Route>
+
+        <Route exact path='/'>
+              <Home changeCart={changeCart} />
+            </Route>
+
 
           </Switch>
         </Router>

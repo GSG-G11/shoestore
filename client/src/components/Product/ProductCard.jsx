@@ -6,27 +6,33 @@ export default class ProductCard extends Component {
     addedToCart: false,
   }
   addToCart = () => {
-    const { name, price, imgLink, id } = this.props;
+    const { name, price, imgLink, id, changeCart} = this.props;
     const { addedToCart } = this.state;
     if(!addedToCart) {
     const products = JSON.parse(localStorage.getItem('products'));
     products.push({ id, name, price, imgLink });
     localStorage.setItem('products', JSON.stringify(products));
     this.setState({ addedToCart: true });
+    changeCart(products.length)
+
     } else {
       const products = JSON.parse(localStorage.getItem('products'));
       const newProducts = products.filter(item => item.id !== id);
       localStorage.setItem('products', JSON.stringify(newProducts));
       this.setState({ addedToCart: false });
+      changeCart(newProducts.length)
+
     }
   };
 
   componentDidMount() {
-    const { id, buttons } = this.props;
+    const { id, buttons , changeCart} = this.props;
     if(typeof buttons === 'string'){
     const products = JSON.parse(localStorage.getItem('products'));
     const addedToCart = products.some(item => item.id === id);
     this.setState({ addedToCart });
+    changeCart(products.length)
+
   }
   }
   render() {

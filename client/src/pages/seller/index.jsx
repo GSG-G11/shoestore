@@ -9,11 +9,13 @@ export default class Seller extends Component {
   state = {
     products: [],
     newleyAdded: {}
+    
   };
 
   componentDidMount() {
     axios.get("/api/v1/getProducts").then((res) => {
       const products = res.data;
+      
       this.setState({ products });
     });
 
@@ -39,12 +41,7 @@ export default class Seller extends Component {
       <>
         <div className="SellerHeader">
           <h1>PRODUCTS</h1>
-          <Modal
-            name="this"
-            description="that"
-            price="2.5"
-            image="https://i.ibb.co/QcHvYvf/back-Ground-header.jpg"
-          />
+          <Modal />
         </div>
 
         <div className="SellerProducts">
@@ -55,7 +52,9 @@ export default class Seller extends Component {
               imgLink={product.image}
               buttons={["Edit", " Delete"]}
             />
-          ))}
+          )
+          )
+          }
         </div>
 
         <CombinedFooter />

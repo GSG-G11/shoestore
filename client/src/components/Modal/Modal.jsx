@@ -4,36 +4,53 @@ import "./style.scss";
 import axios from "axios";
 
 export default class Modal extends Component {
-  constructor(props) {
-    super(props);
-    const { name, description, price, image } = props;
-    this.state = {
-      products: [],
-      inputsValues: { name, description, price: price, image },
-    };
-  }
-
+  state = {
+    products: [],
+    name: "",
+    price: "",
+    description: "",
+    image: "",
+  };
 
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
+  // addProduct = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .post("/api/v1/addProduct", this.props)
+  //     .then((response) => {
+  //       return response.data;
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
   addProduct = (e) => {
     e.preventDefault();
-    axios
-      .post("/api/v1/addProduct", this.props)
-      .then((response) => {
-        return response.data;
-      })
-      .catch((error) => console.log(error));
+    const { addProductToState } = this.props;
+    const { name, price, description, image } = this.state;
+ 
+      const data = { name, price, description, image };
+      axios
+        .post("/api/v1/addProduct", data)
+        .then((res) => {
+          const { product } = res.data;
+          addProductToState(product);
+          this.setState({
+            name: "",
+            price: "",
+            description: "",
+            image: "",
+          });
+        })
+        .catch((err) => console.log(err));
+    
   };
 
-
-
-
   render() {
+    const { name, description, price, image } = this.state;
 
     return (
       <>
@@ -51,12 +68,15 @@ export default class Modal extends Component {
             <input
               placeholder="Product Name"
               type="text"
-              name="sname"
+              name="name"
+              value={name}
               onChange={this.handleChange}
             />
             <input
               placeholder="Product Price (in USD)"
               type="number"
+              name="price"
+              value={price}
               onChange={this.handleChange}
             />
             <textarea
@@ -64,14 +84,22 @@ export default class Modal extends Component {
               id=""
               cols="30"
               rows="10"
+              name="description"
+              value={description}
               onChange={this.handleChange}
             ></textarea>
             <input
               placeholder="Product Image"
               type="text"
+              name="image"
+              value={image}
               onChange={this.handleChange}
+              Required
             />
-            <button onClick={this.addProduct}> submit</button>
+            <button type="submit" onClick={this.addProduct}>
+              {" "}
+              submit
+            </button>
           </div>
         </div>
       </>

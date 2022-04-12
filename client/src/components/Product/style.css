@@ -10,6 +10,7 @@
   width: 270px;
   object-fit: cover;
   border-radius: 10px;
+  
 }
 
 .product-price {
@@ -55,6 +56,8 @@
 
 .product-btn button {
   width: 125px;
+  cursor: pointer;
+
   height: 40px;
   border: none;
   border-radius: 10px;
@@ -65,9 +68,13 @@
 .product-btn button:nth-child(1) {
   color: #ff4f04;
   background: #fff;
+  cursor: pointer;
+
 }
 
 .product-btn button:nth-child(2) {
   color: #fff;
   background: #ff4f04;
+  cursor: pointer;
+
 }

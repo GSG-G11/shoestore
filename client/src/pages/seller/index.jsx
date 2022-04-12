@@ -15,6 +15,16 @@ export default class Seller extends Component {
       products: [...this.state.products, newProduct],
     });
   };
+updateProductState = (product) => {
+  const { products } = this.state;
+  const newProducts = products.map((item) => {
+    if (item.id === product.id) {
+      return product;
+    }
+    return item;
+  });
+  this.setState({ products: newProducts });
+};
   componentDidMount() {
     axios.get("/api/v1/getProducts").then((res) => {
       const products = res.data;
@@ -33,10 +43,15 @@ export default class Seller extends Component {
     //     .then((response) => console.log(response))
     //     .catch((error) => console.log(error));
 
-    // axios.delete('/api/v1/deleteProduct/11')
-    // .then(() => this.setState({ status: 'Delete successful' }));
   }
 
+  handleDelete = (id) => {
+    axios.delete(`/api/v1/deleteProduct/${id}`).then((res) => {
+      const products = this.state.products.filter((product) => product._id !== id);
+      this.setState({ products });
+    });
+  };
+  
   render() {
     const { products } = this.state;
 
@@ -44,20 +59,22 @@ export default class Seller extends Component {
       <>
         <div className="SellerHeader">
           <h1>PRODUCTS</h1>
-          <Modal addProductToState={this.addProductToState} />
+          <Modal addProductToState={this.addProductToState} updateProductState={this.updateProductState} />
         </div>
 
         {this.state.products && (
           <div className="SellerProducts">
             {products.map((product) => {
-              // console.log(product);
+              console.log(product);
+
               return (
                 <ProductCard
                   key={product.id}
                   name={product.name}
                   price={product.price}
                   imgLink={product.image}
-                  buttons={["Edit", " Delete"]}
+                  handleDelete={() => this.handleDelete(product.id)}
+                  handleUpdate = {() => this.handleUpdate(product.id)}
                 />
               );
             })}

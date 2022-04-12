@@ -10,6 +10,7 @@ export default class Modal extends Component {
     price: "",
     description: "",
     image: "",
+    errorMsg: "",
   };
 
   handleChange = (event) => {
@@ -26,7 +27,9 @@ export default class Modal extends Component {
   addProduct = (e) => {
     const { addProductToState } = this.props;
     const { name, price, description, image } = this.state;
-
+    if (!name || !price || !description || !image) {
+      this.setState({ errorMsg: 'Please fill all fields' });
+    } else {
     const data = { name, price, description, image };
     axios
       .post("/api/v1/addProduct", data)
@@ -43,10 +46,40 @@ export default class Modal extends Component {
         });
       })
       .catch((err) => console.log(err));
+    }
   };
 
+updteProduct = (id) =>{
+  const { updateProductState } = this.props;
+  const { name, price, description, image } = this.state;
+  if (!name || !price || !description || !image) {
+    this.setState({ errorMsg: 'Please fill all fields' });
+  } else {
+  const data = { name, price, description, image };
+  axios
+    .post(`/api/v1/updateProduct/${id}`, data)
+    .then((res) => {
+      const { product } = res.data;
+      console.log(res.data);
+      updateProductState(product);
+      this.setState({
+        name: "",
+        price: "",
+        description: "",
+        image: "",
+        isOpen: false,
+      });
+    })
+    .catch((err) => console.log(err));
+  }
+}
+
+
+
+
+
   render() {
-    const { name, description, price, image } = this.state;
+    const {  errorMsg,name, description, price, image } = this.state;
 
     return (
       <>
@@ -92,9 +125,12 @@ export default class Modal extends Component {
               onChange={this.handleChange}
               Required
             />
-               <a href="#"> <button  type="submit" onClick={this.addProduct}>
-              submit
-            </button></a>
+              {errorMsg ? <p className="error-message">{errorMsg}</p> : null}
+
+            <button onClick={this.addProduct}>ADD PRODUCT</button>
+            
+
+            
 
            
           </div>

@@ -1,18 +1,33 @@
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import "./App.css";
 import Home from "./pages/home";
 import Header from "./components/header";
-const App = () => {
-  return (
-    <>
-      <Header />
-    <Router>
-      <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
 
-        {/* <Route path='/login'>
+class App extends Component {
+
+  state = {
+    inputSearch: ''
+  }
+
+  handleSearch = (e) => {
+    this.setState({inputSearch: e.target.value})
+  }
+
+
+
+  render() {
+    console.log(this.state);
+    return (
+      <>
+        <Header handleSearch = {this.handleSearch}/>
+        <Router>
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+
+            {/* <Route path='/login'>
           <Login />
         </Route>
 
@@ -28,11 +43,14 @@ const App = () => {
           <ProductInfo />
         </Route> */}
 
-      </Switch>
-    </Router>
-      {/* <Footer /> */}
-    </>
-  );
-};
+          </Switch>
+        </Router>
+        {/* <Footer /> */}
+      </>
+    );
+  }
+}
+
 
 export default App;
+

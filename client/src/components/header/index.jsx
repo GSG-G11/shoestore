@@ -7,12 +7,12 @@ import Dropdwon from "./downHeader/Dropdown";
 import NavigationMenu from "./downHeader/NavigationMenu";
 import "./upperHeader/upperHeader.css";
 
- const Header = () => {
+ const Header = ({handleSearch}) => {
   return (
     <div className="Header">
     <div className="upper__header">
       <Logo />
-      <SearchBar />
+      <SearchBar handleSearch = {handleSearch}/>
       <CartIcon />
       <LoginButton />
     </div>

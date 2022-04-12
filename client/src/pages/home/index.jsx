@@ -7,11 +7,12 @@ import Products from './displayProducts/Products';
 export default class Home extends Component {
   state = {};
   render() {
+    const { changeCart } = this.props;
     return (
       <div>
         <HomeLanding />
         <TopFilter />
-        <Products />
+        <Products changeCart={changeCart} />
         <Ad />
       </div>
     );

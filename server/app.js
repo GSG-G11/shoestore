@@ -11,7 +11,7 @@ const {
 } = process;
 app.use(router);
 
-app.set('port', PORT || 3000);
+app.set('port', PORT || 4000);
 app.disable('x-powered-by');
 
 app.use([compression(), express.urlencoded({ extended: true }), express.json()]);

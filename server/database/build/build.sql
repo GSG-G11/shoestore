@@ -7,8 +7,7 @@ CREATE TABLE products(
     "name" VARCHAR(200) NOT NULL,
     "price" DECIMAL(10,2) NOT NULL,
     "description" TEXT NOT NULL,
-    "image" TEXT NOT NULL,
-
+    "image" TEXT NOT NULL
 );
 
 

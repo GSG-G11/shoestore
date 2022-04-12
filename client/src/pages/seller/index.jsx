@@ -8,14 +8,17 @@ import "./seller.css";
 export default class Seller extends Component {
   state = {
     products: [],
-    newleyAdded: {}
-    
+    newleyAdded: {},
   };
-
+  addProductToState = (newProduct) => {
+    this.setState({
+      products: [...this.state.products, newProduct],
+    });
+  };
   componentDidMount() {
     axios.get("/api/v1/getProducts").then((res) => {
       const products = res.data;
-      
+
       this.setState({ products });
     });
 
@@ -41,21 +44,25 @@ export default class Seller extends Component {
       <>
         <div className="SellerHeader">
           <h1>PRODUCTS</h1>
-          <Modal />
+          <Modal addProductToState={this.addProductToState} />
         </div>
 
-        <div className="SellerProducts">
-          {products.map((product) => (
-            <ProductCard
-              name={product.name}
-              price={product.price}
-              imgLink={product.image}
-              buttons={["Edit", " Delete"]}
-            />
-          )
-          )
-          }
-        </div>
+        {this.state.products && (
+          <div className="SellerProducts">
+            {products.map((product) => {
+              // console.log(product);
+              return (
+                <ProductCard
+                  key={product.id}
+                  name={product.name}
+                  price={product.price}
+                  imgLink={product.image}
+                  buttons={["Edit", " Delete"]}
+                />
+              );
+            })}
+          </div>
+        )}
 
         <CombinedFooter />
       </>

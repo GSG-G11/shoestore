@@ -17,36 +17,32 @@ export default class Modal extends Component {
     this.setState({ [name]: value });
   };
 
-  // addProduct = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .post("/api/v1/addProduct", this.props)
-  //     .then((response) => {
-  //       return response.data;
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
 
+  closeModal = (value) => {
+
+    this.setState({ isOpen: false });
+  };
+  
   addProduct = (e) => {
-    e.preventDefault();
     const { addProductToState } = this.props;
     const { name, price, description, image } = this.state;
- 
-      const data = { name, price, description, image };
-      axios
-        .post("/api/v1/addProduct", data)
-        .then((res) => {
-          const { product } = res.data;
-          addProductToState(product);
-          this.setState({
-            name: "",
-            price: "",
-            description: "",
-            image: "",
-          });
-        })
-        .catch((err) => console.log(err));
-    
+
+    const data = { name, price, description, image };
+    axios
+      .post("/api/v1/addProduct", data)
+      .then((res) => {
+        const { product } = res.data;
+        console.log(res.data);
+        addProductToState(product);
+        this.setState({
+          name: "",
+          price: "",
+          description: "",
+          image: "",
+          isOpen: false,
+        });
+      })
+      .catch((err) => console.log(err));
   };
 
   render() {
@@ -96,10 +92,11 @@ export default class Modal extends Component {
               onChange={this.handleChange}
               Required
             />
-            <button type="submit" onClick={this.addProduct}>
-              {" "}
+               <a href="#"> <button  type="submit" onClick={this.addProduct}>
               submit
-            </button>
+            </button></a>
+
+           
           </div>
         </div>
       </>

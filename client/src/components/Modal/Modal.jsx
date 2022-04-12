@@ -6,34 +6,35 @@ import axios from "axios";
 export default class Modal extends Component {
   constructor(props) {
     super(props);
+    const { name, description, price, image } = props;
     this.state = {
       products: [],
-      status: "",
-      id: "",
-      edit: false,
-      inputsValues: { name: '', description: '', price: 0.0, image: '' },
-
+      inputsValues: { name, description, price: price, image },
     };
   }
+
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
+
+
   addProduct = (e) => {
     e.preventDefault();
-    const { name, description, price, image } = this.state.inputsValues;
-
     axios
-      .post("/api/v1/addProduct", {
-        name: name,
-        description: description,
-        price: price,
-        image: image,
+      .post("/api/v1/addProduct", this.props)
+      .then((response) => {
+        return response.data;
       })
-      .then((response) => console.log(response))
       .catch((error) => console.log(error));
   };
+
+
+
+
   render() {
+
     return (
       <>
         <div>

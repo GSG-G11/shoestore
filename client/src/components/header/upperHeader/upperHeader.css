@@ -11,13 +11,17 @@
   padding: 0.5rem 2rem;
   display: flex;
   flex-direction: column;
+  
 }
 
 .upper__header {
   width: 100%;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+	  
 }
 
 .logo {

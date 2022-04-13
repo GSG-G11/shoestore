@@ -22,7 +22,7 @@ class App extends Component {
 
 
   render() {
-    const {changeCart, handleSearch, state:{itemsOfCart} } = this
+    const {changeCart, handleSearch, state:{itemsOfCart, inputSearch} } = this
 
     return (
       <>
@@ -47,7 +47,7 @@ class App extends Component {
         </Route>
 
         <Route exact path='/'>
-              <Home changeCart={changeCart} />
+              <Home changeCart={changeCart} inputSearch={inputSearch} />
             </Route>
 
 

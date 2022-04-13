@@ -50,14 +50,3 @@ html {
   }
 }
 
-.footer {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 3rem 5rem;
-  height: 20rem;
-}
-
-.footer p {
-  font-size: 14px;
-}

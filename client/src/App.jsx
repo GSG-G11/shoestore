@@ -6,6 +6,7 @@ import Seller from "./pages/seller";
 
 import Header from "./components/header";
 import Cart from "./pages/Cart/Cart";
+import LoginForm from './components/Login/LoginForm';
 
 class App extends Component {
   state = {
@@ -47,10 +48,10 @@ class App extends Component {
         <Route  path='/product'>
           <Product />
         </Route>
-
+    */}
             <Route path='/login'>
-          <Login />
-        </Route> */}
+          <LoginForm />
+        </Route> 
             <Route exact path="/seller">
               <Seller />
             </Route>

@@ -11,10 +11,13 @@ export default class CartIcon extends React.Component {
       <FontAwesomeIcon
         className="shopping__cart__icon"
         icon={faShoppingCart}
-        onClick={() => {}}
+        onClick={(e) => {
+          e.preventDefault();
+          window.location.href='/cart';
+          }}
         
       />
-      <div className="cart__counter">0</div>
+      <div className="cart__counter">{this.props.itemsOfCart}</div>
       </div>
     );
   }

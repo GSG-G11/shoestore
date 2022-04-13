@@ -11,9 +11,9 @@ if (process.env.NODE_ENV === 'test') {
   DATABASE_URL = process.env.DB_URL_DEV;
 }
 
-if (!DATABASE_URL) {
-  throw new Error('database not found');
-}
+// if (!DATABASE_URL) {
+//   throw new Error('database not found');
+// }
 
 const connection = new Pool({
   connectionString: DATABASE_URL,

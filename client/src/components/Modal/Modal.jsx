@@ -139,7 +139,8 @@ export default class Modal extends Component {
             {errorMsg ? <p className="error-message">{errorMsg}</p> : null}
             <button
               onClick={() => {
-                this.updateProduct(idUpdate);
+                this.addProduct();
+                // this.updateProduct(idUpdate);
               }}
             >
               {modalOpened}

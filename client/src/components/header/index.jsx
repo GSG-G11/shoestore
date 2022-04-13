@@ -7,14 +7,15 @@ import Dropdwon from "./downHeader/Dropdown";
 import NavigationMenu from "./downHeader/NavigationMenu";
 import "./upperHeader/upperHeader.css";
 
- const Header = ({handleSearch, itemsOfCart}) => {
+ const Header = ({handleSearch, itemsOfCart, isLoggedIn}) => {
   return (
+
     <div className="Header">
-    <div className="upper__header">
+    <div className="upper__header ">
       <Logo />
       <SearchBar handleSearch = {handleSearch}/>
       <CartIcon itemsOfCart={itemsOfCart} />
-      <LoginButton />
+      <LoginButton isLoggedIn={isLoggedIn}  />
     </div>
     <div className="down__header">
       <Dropdwon options={['Select a category', 'Small', 'Medium', 'Large']} />

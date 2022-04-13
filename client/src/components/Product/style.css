@@ -3,6 +3,8 @@
 .p-card {
   position: relative;
   width: 270px;
+  margin: 20px 0;
+
 }
 
 .product-img {
@@ -21,10 +23,26 @@
   text-align: center;
   letter-spacing: -0.31px;
 }
+.product-dd{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+   
+}
+.product-category {
+  background: #ff4f048a;
+  padding: 3px;
+  color: white;
+  border-radius: 17px;
+  text-align: center;
+  letter-spacing: -0.31px;
+}
 .product-name {
   font-family: "Poppins", sans-serif;
   text-align: left;
   font-size: 1rem;
+  margin-right: 10px;
+
 }
 
 .container {

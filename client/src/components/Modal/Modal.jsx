@@ -62,17 +62,15 @@ export default class Modal extends Component {
     }
   };
 
-  updteProduct = (id) => {
+  updateProduct = (id) => {
     const { updateProductState } = this.props;
     const { name, price, description, image } = this.state;
-    // let allProducts = [...this.state.products];
-    // const upadtedNote = allProducts.filter(({ id }) => productId === id);
     if (!name || !price || !description || !image) {
       this.setState({ errorMsg: "Please fill all fields" });
     } else {
       const data = { name, price, description, image };
       axios
-        .post(`/api/v1/updateProduct/${id}`, data)
+        .put(`/api/v1/updateProduct/${id}`, data)
         .then((res) => {
           const { product } = res.data;
           updateProductState(product);
@@ -81,7 +79,6 @@ export default class Modal extends Component {
             price: "",
             description: "",
             image: "",
-            isOpen: false,
           });
         })
         .catch((err) => console.log(err));
@@ -134,11 +131,11 @@ export default class Modal extends Component {
               name="image"
               value={image}
               onChange={this.handleChange}
-              Required
+              required
             />
             {errorMsg ? <p className="error-message">{errorMsg}</p> : null}
 
-            <button onClick={this.addProduct}>{modalOpened}</button>
+            <button onClick={(id)=> {this.updateProduct(id)}}>{modalOpened}</button>
           </div>
         </div>
       </>

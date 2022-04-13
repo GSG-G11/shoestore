@@ -17,6 +17,11 @@ export default class Seller extends Component {
       products: [...this.state.products, newProduct],
     });
   };
+  deleteProductFromState = (id) => {
+    const newProducts = this.state.products.filter((product) => product._id !== id);
+    this.setState({ products: newProducts });
+  };
+
   updateProductState = (product) => {
     const { products } = this.state;
     const newProducts = products.map((item) => {
@@ -43,22 +48,20 @@ export default class Seller extends Component {
       this.setState({ products });
     });
   };
-  handleUpdate = (id) => {
-    //fetch the data
-    axios
-      .post("/api/v1/updateProduct/id", {
-        name: "Updated",
-        price: 23,
-        description: "Flintstone",
-        image: "https://i.ibb.co/QcHvYvf/back-Ground-header.jpg",
-      })
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
-
-    this.setState({ modalOpened: "Update Product" });
-      //get product data to show in the modal
   
+  handleUpdate = (id) => {
+    axios.get(`/api/v1/getProduct/${id}`).then((res) => {
+      const  product  = res.data[0];
+      console.log(product);
 
+      this.setState({
+        name : product.name,
+        price: product.price,
+        description: product.description,
+        image: product.image,
+      });
+    });
+    this.setState({ modalOpened: "Update Product" });
   };
   handleModalOpened = () => {
     this.setState({ modalOpened: "Add Product" });
@@ -75,6 +78,7 @@ export default class Seller extends Component {
           <Modal
             addProductToState={this.addProductToState}
             updateProductState={this.updateProductState}
+            deleteProductFromState={this.deleteProductFromState}
             modalOpened={this.state.modalOpened}
             handleModalOpened={this.handleModalOpened}
           />

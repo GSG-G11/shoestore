@@ -14,7 +14,6 @@ export default class Modal extends Component {
     errorMsg: "",
     // UpdateOrAdd : "",
   };
- 
 
   // updateOrAddForModal = () => {
   //   if(this.props.modalOpened === "Add product"){ // change between add and update handlers when you press the button in the modal
@@ -63,32 +62,35 @@ export default class Modal extends Component {
   };
 
   updateProduct = (id) => {
-    const { updateProductState } = this.props;
     const { name, price, description, image } = this.state;
-    if (!name || !price || !description || !image) {
-      this.setState({ errorMsg: "Please fill all fields" });
-    } else {
       const data = { name, price, description, image };
+      console.log(this.state);
       axios
-        .put(`/api/v1/updateProduct/${id}`, data)
+        .post(`/api/v1/updateProduct/${id}`, data)
         .then((res) => {
-          const { product } = res.data;
-          updateProductState(product);
           this.setState({
             name: "",
             price: "",
             description: "",
             image: "",
           });
+          console.log(res, "res");
         })
         .catch((err) => console.log(err));
-    }
   };
 
   render() {
     const { errorMsg, name, description, price, image } = this.state;
-    const { modalOpened, handleModalOpened } = this.props;
-    console.log(this.props, "props init")
+    const {
+      idUpdate,
+      modalOpened,
+      handleModalOpened,
+      nameUpdate,
+      priceUpdate,
+      descriptionUpdate,
+      imageUpdate,
+    } = this.props;
+    console.log(this.props, "props init");
     return (
       <>
         <div>
@@ -102,18 +104,19 @@ export default class Modal extends Component {
               Close
             </a>
             <h3>{modalOpened}</h3>
+
             <input
               placeholder="Product Name"
               type="text"
               name="name"
-              value={name}
+              value={name || nameUpdate}
               onChange={this.handleChange}
             />
             <input
               placeholder="Product Price (in USD)"
               type="number"
               name="price"
-              value={price}
+              value={price || priceUpdate}
               onChange={this.handleChange}
             />
             <textarea
@@ -122,20 +125,25 @@ export default class Modal extends Component {
               cols="30"
               rows="10"
               name="description"
-              value={description}
+              value={description || descriptionUpdate}
               onChange={this.handleChange}
             ></textarea>
             <input
               placeholder="Product Image"
               type="text"
               name="image"
-              value={image}
+              value={image || imageUpdate}
               onChange={this.handleChange}
               required
             />
             {errorMsg ? <p className="error-message">{errorMsg}</p> : null}
-
-            <button onClick={(id)=> {this.updateProduct(id)}}>{modalOpened}</button>
+            <button
+              onClick={() => {
+                this.updateProduct(idUpdate);
+              }}
+            >
+              {modalOpened}
+            </button>
           </div>
         </div>
       </>

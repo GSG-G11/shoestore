@@ -3,6 +3,8 @@
 .p-card {
   position: relative;
   width: 270px;
+  margin: 20px 0;
+
 }
 
 .product-img {

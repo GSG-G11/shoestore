@@ -8,8 +8,11 @@ import NavigationMenu from "./downHeader/NavigationMenu";
 import "./upperHeader/upperHeader.css";
 
  const Header = ({handleSearch, itemsOfCart}) => {
+ 
   return (
+    <>
     <div className="Header">
+
     <div className="upper__header">
       <Logo />
       <SearchBar handleSearch = {handleSearch}/>
@@ -21,6 +24,10 @@ import "./upperHeader/upperHeader.css";
       <NavigationMenu />
     </div>
   </div> 
+  <div className='headermargin'></div>
+
+  </>
+
    )
 }
 export default Header;

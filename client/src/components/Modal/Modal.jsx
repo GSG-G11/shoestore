@@ -100,13 +100,14 @@ export default class Modal extends Component {
               Close
             </a>
             <h3>{modalOpened}</h3>
-
+<form>
             <input
               placeholder="Product Name"
               type="text"
               name="name"
               value={name || nameUpdate}
               onChange={this.handleChange}
+              required
             />
             <input
               placeholder="Product Price (in USD)"
@@ -114,6 +115,7 @@ export default class Modal extends Component {
               name="price"
               value={price || priceUpdate}
               onChange={this.handleChange}
+              required
             />
             <textarea
               placeholder="Product Description"
@@ -123,6 +125,7 @@ export default class Modal extends Component {
               name="description"
               value={description || descriptionUpdate}
               onChange={this.handleChange}
+              required
             ></textarea>
               <select
                 name="category"
@@ -134,7 +137,7 @@ export default class Modal extends Component {
               />
             <input
               placeholder="Product Image"
-              type="text"
+              type="url"
               name="image"
               value={image || imageUpdate}
               onChange={this.handleChange}
@@ -153,6 +156,7 @@ export default class Modal extends Component {
             >
               {modalOpened}
             </button>
+            </form>
           </div>
         </div>
       </>

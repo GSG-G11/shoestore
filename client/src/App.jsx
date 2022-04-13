@@ -6,6 +6,8 @@ import Seller from "./pages/seller";
 import Header from "./components/header";
 import Cart from "./pages/Cart/Cart";
 import ProductDet from "./pages/productDetails/ProductDet";
+import CombinedFooter from './components/Footer/CombinedFooter';
+import LoginForm from './components/Login/LoginForm';
 
 class App extends Component {
   state = {
@@ -21,11 +23,7 @@ class App extends Component {
   };
 
   render() {
-    const {
-      changeCart,
-      handleSearch,
-      state: { itemsOfCart },
-    } = this;
+    const {changeCart, handleSearch, state:{itemsOfCart, inputSearch} } = this
 
     return (
       <>
@@ -49,23 +47,26 @@ class App extends Component {
         <Route  path='/product'>
           <Product />
         </Route>
-
+    */}
             <Route path='/login'>
-          <Login />
-        </Route>
+
+          <LoginForm />
+        </Route> 
             <Route exact path="/seller">
+
               <Seller />
             </Route>
-            <Route path="/cart">
-              <Cart />
-            </Route> */}
 
-            <Route exact path="/">
-              <Home changeCart={changeCart} />
+        <Route  path='/cart'>
+          <Cart />
+        </Route>
+
+        <Route exact path='/'>
+              <Home changeCart={changeCart} inputSearch={inputSearch} />
             </Route>
           </Switch>
         </Router>
-        {/* <Footer /> */}
+        <CombinedFooter />
       </>
     );
   }

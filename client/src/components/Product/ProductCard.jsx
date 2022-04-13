@@ -51,9 +51,14 @@ export default class ProductCard extends Component {
           
         </div>
         <div className="container">
+<<<<<<< HEAD
           <h3 className="product-name" onClick={(e) => { e.preventDefault();
           window.location.href=`/product/${id}`;}}>{name}</h3>
           <p className="product-price">${price}</p>
+=======
+          <h3 className="product-name">{name}</h3>
+          <p className="product-price">${(+price).toFixed(0)}</p>
+>>>>>>> main
 
         </div>
       </div>

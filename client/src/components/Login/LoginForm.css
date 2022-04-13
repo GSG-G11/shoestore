@@ -43,6 +43,14 @@
 }
 
 
-Button{
+.Login__btn{
     margin-left: 140px;
+    width: 10rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: orange;
 }

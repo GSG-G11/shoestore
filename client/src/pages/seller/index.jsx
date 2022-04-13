@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import CombinedFooter from "../../components/Footer/CombinedFooter";
 import ProductCard from "../../components/Product/ProductCard";
 import Modal from "../../components/Modal/Modal";
 import axios from "axios";
@@ -105,7 +104,6 @@ export default class Seller extends Component {
           </div>
         )}
 
-        <CombinedFooter />
       </>
     );
   }

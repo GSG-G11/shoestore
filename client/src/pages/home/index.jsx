@@ -5,14 +5,27 @@ import HomeLanding from '../../components/Home/home';
 import Products from './displayProducts/Products';
 
 export default class Home extends Component {
-  state = {};
+  state = {
+    selectedCategory: 0,
+    priceRange: 0,
+  };
+
+  handleChangePrice =(e) => {
+    this.setState({ priceRange: e.target.value });
+  }
+  handleChangeCategory =(e) => {
+    this.setState({ selectedCategory: e.target.value });
+  }
+
+
   render() {
-    const { changeCart } = this.props;
+    const { changeCart, inputSearch } = this.props;
+    const { selectedCategory, priceRange } = this.state;
     return (
       <div>
         <HomeLanding />
-        <TopFilter />
-        <Products changeCart={changeCart} />
+        <TopFilter handleChangePrice={this.handleChangePrice} handleChangeCategory={this.handleChangeCategory} />
+        <Products selectedCategory={selectedCategory} priceRange={priceRange} inputSearch={inputSearch} changeCart={changeCart} />
         <Ad />
       </div>
     );

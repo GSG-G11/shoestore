@@ -4,14 +4,15 @@ import './style.scss';
 
 export default class TopFilter extends Component {
   render() {
+    const { handleChangePrice, handleChangeCategory } = this.props;
     return (
       <div className='trend-with-filter'>
-        <Dropdwon options={['Filter by Category', 'Small', 'Medium', 'Large']} />
+        <Dropdwon handleChangeCategory={handleChangeCategory} options={['Filter by Category', 'Men', 'Women', 'Kids']} />
         <div className='pHeader'>
           <p>TOP PRODUCTS</p>
           <h1>TRENDING THIS WEEK</h1>
         </div>
-        <Dropdwon options={['Filter by Price', '100<', '100 - 200',  '200>']} />
+        <Dropdwon handleChangePrice={handleChangePrice}  options={['Filter by Price', '100<', '100 - 200',  '200>']} />
 
       </div>
     )

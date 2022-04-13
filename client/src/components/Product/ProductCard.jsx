@@ -52,7 +52,7 @@ export default class ProductCard extends Component {
         </div>
         <div className="container">
           <h3 className="product-name">{name}</h3>
-          <p className="product-price">${price}</p>
+          <p className="product-price">${(+price).toFixed(0)}</p>
 
         </div>
       </div>

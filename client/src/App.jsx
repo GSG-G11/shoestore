@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/home";
 import Seller from "./pages/seller";
-
+import CombinedFooter from './components/Footer/CombinedFooter';
 import Header from "./components/header";
 import Cart from "./pages/Cart/Cart";
 import LoginForm from './components/Login/LoginForm';
@@ -22,11 +22,7 @@ class App extends Component {
   };
 
   render() {
-    const {
-      changeCart,
-      handleSearch,
-      state: { itemsOfCart },
-    } = this;
+    const {changeCart, handleSearch, state:{itemsOfCart, inputSearch} } = this
 
     return (
       <>
@@ -50,21 +46,24 @@ class App extends Component {
         </Route>
     */}
             <Route path='/login'>
+
           <LoginForm />
         </Route> 
             <Route exact path="/seller">
+
               <Seller />
             </Route>
-            <Route path="/cart">
-              <Cart />
-            </Route>
 
-            <Route exact path="/">
-              <Home changeCart={changeCart} />
+        <Route  path='/cart'>
+          <Cart />
+        </Route>
+
+        <Route exact path='/'>
+              <Home changeCart={changeCart} inputSearch={inputSearch} />
             </Route>
           </Switch>
         </Router>
-        {/* <Footer /> */}
+        <CombinedFooter />
       </>
     );
   }

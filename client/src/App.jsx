@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/home";
 import Seller from "./pages/seller";
-import CombinedFooter from './components/Footer/CombinedFooter';
 import Header from "./components/header";
 import Cart from "./pages/Cart/Cart";
+import ProductDet from "./pages/productDetails/ProductDet";
+import CombinedFooter from './components/Footer/CombinedFooter';
 import LoginForm from './components/Login/LoginForm';
 
 class App extends Component {
@@ -26,14 +27,16 @@ class App extends Component {
 
     return (
       <>
+      
         <Header itemsOfCart={itemsOfCart} handleSearch={handleSearch} />
         <Router>
           <Switch>
-            {/* <Route  path={'/product/:id'}>
-          <ProductInfo />
+            
+            <Route  path={'/product/:id'}>
+          <ProductDet />
         </Route>
         
-        <Route path='/notfound'>
+        {/* <Route path='/notfound'>
           <NotFound />
         </Route>
 

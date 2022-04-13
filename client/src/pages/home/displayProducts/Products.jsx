@@ -41,7 +41,7 @@ checkCategory = (selectedCategory, product) => {
     return <div className='home-products'>
       {products.filter((product => (inputSearch ? product.name.toLowerCase().includes(inputSearch.toLowerCase()): true) && 
       (priceRange ? this.checkPrice(priceRange, product) : true  ) && (selectedCategory? this.checkCategory(selectedCategory, product) : true) ))
-   .map(({id, name, price, image}) => <ProductCard changeCart={changeCart}  key={id} id={id} name= {name} price={+price} imgLink={image} buttons={'Add to cart'} />)}
+   .map(({id, name, price, image,category}) => <ProductCard changeCart={changeCart}  key={id} id={id} name= {name} price={+price} imgLink={image} category ={category}buttons={'Add to cart'} />)}
 
     </div>;
   }

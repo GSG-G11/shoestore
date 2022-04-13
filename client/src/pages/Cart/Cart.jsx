@@ -1,22 +1,31 @@
 
 import './Cart.css'
+import React, { Component } from 'react';
 
+class Cart extends Component {
+  state ={
+    products: []
+  }
+  
 
+  componentDidMount() {
+    this.setState({products: JSON.parse(localStorage.getItem('products')) })
+  }
 
+  deleteFromCart = (id) =>{
+    const { products } = this.state
+    const filtered = products.filter(ele => ele.id !== id )
+    this.setState({products: filtered })
+    localStorage.setItem("products", filtered)
+  }
 
-
-const Cart = () => {
-
-  const products = JSON.parse(localStorage.getItem('products')) || [];
-
-  // const products = [{ name: 'amran', image: 'https://i.ibb.co/QcHvYvf/back-Ground-header.jpg', price: 2000, description: 'pla plapla' },
-  // { name: 'amran', image: 'https://i.ibb.co/QcHvYvf/back-Ground-header.jpg', price: 1000, description: 'pla plapla' }];
-
-
+render(){
+  // const products = JSON.parse(localStorage.getItem('products')) || [];
+  const { products } = this.state
   const result = products.map((product) => (
-    <div>
+    <div >
       <div className="content__order">
-        <div className="img__product"> <img src={product.image} alt="product" /></div>
+        <div > <img className="img__product" src={product.imgLink} alt="product" /></div>
 
         <div className="tools">
 
@@ -27,18 +36,19 @@ const Cart = () => {
 
           </div>
           <div className="tools2">
-            <div className="minus__sign"><i class="fa-solid fa-minus"></i></div>
+          <div className="btnnnn">
+          <div className="minus__sign"><i class="fa-solid fa-minus"></i></div>
             <p > 1 </p>
             <div className="plus__sign"> <i class="fa-solid fa-plus"></i></div>
+            
+          </div>
             <div className="price__product">${product.price}</div>
-            <div className="remove__icon"> <i class="fa-solid fa-trash-can"></i></div>
+            <div className="remove__icon"> <i onClick={this.deleteFromCart} class="fa-solid fa-trash-can"></i></div>
           </div>
         </div>
       </div>
       <hr className="hrr" />
     </div>
-
-
   ))
 
   const prices = products.map(product => {
@@ -56,8 +66,8 @@ const Cart = () => {
 
 
       <div className="order_summary">
-        <p>Order summary</p>
-        <p className="remove_all">remove all</p>
+        <p className="summary">Order summary</p>
+        <p className="remove_all">Remove All</p>
       </div>
 
       {result.length ?  result : <li className="no__product"> no product in your cart </li> }
@@ -69,6 +79,6 @@ const Cart = () => {
 
     </div>
   )
-}
+}}
 
 export default Cart;

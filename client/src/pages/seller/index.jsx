@@ -110,6 +110,7 @@ export default class Seller extends Component {
                   name={product.name}
                   price={product.price}
                   imgLink={product.image}
+                  category={product.category}
                   handleDelete={() => this.handleDelete(product.id)}
                   handleGetDataForUpdate={() =>
                     this.handleGetDataForUpdate(product.id)

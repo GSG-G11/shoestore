@@ -37,7 +37,6 @@ render(){
 
             <p> {product.name} </p>
             <p className="product__description"> {product.description} </p>
-
           </div>
           <div className="tools2">
           <div className="btnnnn">

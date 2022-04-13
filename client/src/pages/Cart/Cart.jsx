@@ -16,9 +16,13 @@ class Cart extends Component {
     const { products } = this.state
     const filtered = products.filter(ele => ele.id !== id )
     this.setState({products: filtered })
-    localStorage.setItem("products", filtered)
+    localStorage.setItem('products', JSON.stringify(filtered))
   }
 
+  removeallCart = () =>{
+    this.setState({products: []})
+    localStorage.setItem('products', JSON.stringify([]))
+  }
 render(){
   // const products = JSON.parse(localStorage.getItem('products')) || [];
   const { products } = this.state
@@ -43,7 +47,7 @@ render(){
             
           </div>
             <div className="price__product">${product.price}</div>
-            <div className="remove__icon"> <i onClick={this.deleteFromCart} class="fa-solid fa-trash-can"></i></div>
+            <div className="remove__icon"> <i onClick={()=>{this.deleteFromCart(product.id)}} class="fa-solid fa-trash-can"></i></div>
           </div>
         </div>
       </div>
@@ -66,8 +70,8 @@ render(){
 
 
       <div className="order_summary">
-        <p className="summary">Order summary</p>
-        <p className="remove_all">Remove All</p>
+        <p  className="summary">Order summary</p>
+        <p onClick={this.removeallCart} className="remove_all">Remove All</p>
       </div>
 
       {result.length ?  result : <li className="no__product"> no product in your cart </li> }

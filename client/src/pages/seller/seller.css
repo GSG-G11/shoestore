@@ -1,0 +1,22 @@
+.SellerProducts {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  padding: 2rem;
+  align-items: center;
+}
+
+.SellerHeader{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    padding: 2rem;
+    align-items: center;
+}
+h1{
+    font-size: 24px;
+}

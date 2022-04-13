@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const path = require('path');
 const {
-  addProduct, getProducts, updateProduct, deleteProduct,
+  addProduct, getProducts, updateProduct, deleteProduct, getProductID,
 } = require('../controller');
 
 router.get('/home', (req, res) => {
@@ -11,6 +11,7 @@ router.get('/home', (req, res) => {
 });
 
 router.get('/getProducts', getProducts);
+router.get('/getProduct/:id', getProductID);
 
 router.post('/addProduct', addProduct);
 router.delete('/deleteProduct/:id', deleteProduct);

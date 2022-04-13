@@ -10,7 +10,6 @@ export default class ProductCard extends Component {
         <div className="product-btn">
           <button onClick={() => handleDelete(this.props.id)}>Delete </button>
           <a href="#open-modal">
-            
             <button onClick={() => handleUpdate(this.props.id)}>Edit </button>
           </a>
         </div>

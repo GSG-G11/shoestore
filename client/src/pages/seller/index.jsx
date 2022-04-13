@@ -9,49 +9,62 @@ export default class Seller extends Component {
   state = {
     products: [],
     newleyAdded: {},
+    modalOpened: "Add Product",
+   
   };
   addProductToState = (newProduct) => {
     this.setState({
       products: [...this.state.products, newProduct],
     });
   };
-updateProductState = (product) => {
-  const { products } = this.state;
-  const newProducts = products.map((item) => {
-    if (item.id === product.id) {
-      return product;
-    }
-    return item;
-  });
-  this.setState({ products: newProducts });
-};
+  updateProductState = (product) => {
+    const { products } = this.state;
+    const newProducts = products.map((item) => {
+      if (item.id === product.id) {
+        return product;
+      }
+      return item;
+    });
+    this.setState({ products: newProducts });
+  };
   componentDidMount() {
     axios.get("/api/v1/getProducts").then((res) => {
       const products = res.data;
 
       this.setState({ products });
     });
-
-    // axios
-    //     .post("/api/v1/updateProduct/2", {
-    //       name: "Updated",
-    //       price: 23,
-    //       description: "Flintstone",
-    //       image: "https://i.ibb.co/QcHvYvf/back-Ground-header.jpg",
-
-    //     })
-    //     .then((response) => console.log(response))
-    //     .catch((error) => console.log(error));
-
   }
 
   handleDelete = (id) => {
     axios.delete(`/api/v1/deleteProduct/${id}`).then((res) => {
-      const products = this.state.products.filter((product) => product._id !== id);
+      const products = this.state.products.filter(
+        (product) => product._id !== id
+      );
       this.setState({ products });
     });
   };
+  handleUpdate = (id) => {
+    //fetch the data
+    axios
+      .post("/api/v1/updateProduct/id", {
+        name: "Updated",
+        price: 23,
+        description: "Flintstone",
+        image: "https://i.ibb.co/QcHvYvf/back-Ground-header.jpg",
+      })
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+
+    this.setState({ modalOpened: "Update Product" });
+      //get product data to show in the modal
   
+
+  };
+  handleModalOpened = () => {
+    this.setState({ modalOpened: "Add Product" });
+   
+  };
+
   render() {
     const { products } = this.state;
 
@@ -59,14 +72,18 @@ updateProductState = (product) => {
       <>
         <div className="SellerHeader">
           <h1>PRODUCTS</h1>
-          <Modal addProductToState={this.addProductToState} updateProductState={this.updateProductState} />
+          <Modal
+            addProductToState={this.addProductToState}
+            updateProductState={this.updateProductState}
+            modalOpened={this.state.modalOpened}
+            handleModalOpened={this.handleModalOpened}
+          />
         </div>
 
         {this.state.products && (
           <div className="SellerProducts">
             {products.map((product) => {
-              console.log(product);
-
+              // console.log(product);
               return (
                 <ProductCard
                   key={product.id}
@@ -74,7 +91,8 @@ updateProductState = (product) => {
                   price={product.price}
                   imgLink={product.image}
                   handleDelete={() => this.handleDelete(product.id)}
-                  handleUpdate = {() => this.handleUpdate(product.id)}
+                  handleUpdate={() => this.handleUpdate(product.id)}
+                  modalOpened={this.state.modalOpened}
                 />
               );
             })}

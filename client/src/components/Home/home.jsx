@@ -6,12 +6,11 @@ function home() {
       <header className="home-header">
         <div className="header-info">
           <div className="discount">
-            <h6 className="title">Lorem ipsum dolor sit amet, consetetur</h6>
+            <h6 className="title">FOOT LOCKER</h6>
            
             <p className ="content">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-            </p>
-           
+Deals up to 75% off along with FREE Shipping above $50 on shoes, boots, sneakers, and sandals at Foot Locker.
+    </p>           
 
             <button>Buy Now</button>
           </div>

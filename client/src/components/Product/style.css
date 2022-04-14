@@ -62,7 +62,13 @@
   justify-content: center;
   background: rgba(0, 0, 0, 0.6);
 }
-
+ .product-btn:hover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+}
 .product-btn {
   display: none;
   width: 100%;

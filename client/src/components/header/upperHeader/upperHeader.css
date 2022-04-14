@@ -11,13 +11,22 @@
   padding: 0.5rem 2rem;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  background: white;
+  z-index: 999;
+  position: fixed;
 }
-
+.headermargin{
+  margin-top: 136px;
+}
 .upper__header {
   width: 100%;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+      
 }
 
 .logo {
@@ -87,7 +96,3 @@ input:focus {
   background-color: #ff4f04;
   font-size: 1.1rem;
 }
-/* 
-.main__search__bar{
-    color: brown;
-} */

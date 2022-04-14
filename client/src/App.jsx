@@ -6,6 +6,8 @@ import Seller from "./pages/seller";
 import Header from "./components/header";
 import Cart from "./pages/Cart/Cart";
 import LoginForm from "./components/Login/LoginForm";
+import ProductDet from "./pages/productDetails/ProductDet";
+import CombinedFooter from "./components/Footer/CombinedFooter";
 
 class App extends Component {
   state = {
@@ -15,8 +17,8 @@ class App extends Component {
   };
 
   handleLoggedIn = (e) => {
-    this.setState({ isLoggedIn : e})
-  }
+    this.setState({ isLoggedIn: e });
+  };
   handleSearch = (e) => {
     this.setState({ inputSearch: e.target.value });
   };
@@ -25,23 +27,26 @@ class App extends Component {
   };
 
   render() {
-    
     const {
       changeCart,
       handleSearch,
-      state: { itemsOfCart },
+      state: { itemsOfCart, inputSearch },
     } = this;
 
     return (
       <>
-        <Header itemsOfCart={itemsOfCart} handleSearch={handleSearch} isLoggedIn={this.state.isLoggedIn} />
+        <Header
+          itemsOfCart={itemsOfCart}
+          handleSearch={handleSearch}
+          isLoggedIn={this.state.isLoggedIn}
+        />
         <Router>
           <Switch>
-            {/* <Route  path={'/product/:id'}>
-          <ProductInfo />
-        </Route>
-        
-        <Route path='/notfound'>
+            <Route path={"/product/:id"}>
+              <ProductDet />
+            </Route>
+
+            {/* <Route path='/notfound'>
           <NotFound />
         </Route>
 
@@ -59,15 +64,17 @@ class App extends Component {
             <Route exact path="/seller">
               <Seller />
             </Route>
+
             <Route path="/cart">
               <Cart />
-            </Route>           
+            </Route>
+
             <Route exact path="/">
-              <Home changeCart={changeCart} />
+              <Home changeCart={changeCart} inputSearch={inputSearch} />
             </Route>
           </Switch>
         </Router>
-        {/* <Footer /> */}
+        <CombinedFooter />
       </>
     );
   }

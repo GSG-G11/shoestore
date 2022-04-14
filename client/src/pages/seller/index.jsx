@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import CombinedFooter from "../../components/Footer/CombinedFooter";
 import ProductCard from "../../components/Product/ProductCard";
 import Modal from "../../components/Modal/Modal";
 import axios from "axios";
@@ -8,23 +7,39 @@ import "./seller.css";
 export default class Seller extends Component {
   state = {
     products: [],
-    idUpdate:0,
+    idUpdate: 0,
     newleyAdded: {},
     nameUpdate: "",
     priceUpdate: "",
     descriptionUpdate: "",
     imageUpdate: "",
+    catagoryUpdate: "",
     errorMsgUpdate: "",
     modalOpened: "Add Product",
+  };
+  updateProductState = (id) => {
+    const { products } = this.state;
+    const product = products.find((product) => product.id === id);
+    this.setState({
+      nameUpdate: product.name,
+      priceUpdate: product.price,
+      descriptionUpdate: product.description,
+      imageUpdate: product.image,
+      catagoryUpdate: product.category,
+  
+    });
+
+
   };
   addProductToState = (newProduct) => {
     this.setState({
       products: [...this.state.products, newProduct],
     });
   };
+
   deleteProductFromState = (id) => {
     const newProducts = this.state.products.filter(
-      (product) => product._id !== id
+      (product) => product.id !== id
     );
     this.setState({ products: newProducts });
   };
@@ -42,10 +57,9 @@ export default class Seller extends Component {
 
   handleDelete = (id) => {
     axios.delete(`/api/v1/deleteProduct/${id}`).then((res) => {
-      const products = this.state.products.filter(
-        (product) => product._id !== id
-      );
-      this.setState({ products });
+    
+      this.deleteProductFromState(id)
+
     });
   };
 
@@ -59,6 +73,7 @@ export default class Seller extends Component {
         priceUpdate: product.price,
         descriptionUpdate: product.description,
         imageUpdate: product.image,
+        catagoryUpdate: product.category,
         modalOpened: "Update Product",
       });
     });
@@ -72,13 +87,14 @@ export default class Seller extends Component {
         <div className="SellerHeader">
           <h1>PRODUCTS</h1>
           <Modal
-          idUpdate = {this.state.idUpdate}
+            idUpdate={this.state.idUpdate}
             nameUpdate={this.state.nameUpdate}
             priceUpdate={this.state.priceUpdate}
             descriptionUpdate={this.state.descriptionUpdate}
             imageUpdate={this.state.imageUpdate}
+            catagoryUpdate={this.state.catagoryUpdate}
             addProductToState={this.addProductToState}
-            deleteProductFromState={this.deleteProductFromState}
+            updateProductState={this.updateProductState}
             modalOpened={this.state.modalOpened}
             handleModalOpened={this.handleModalOpened}
           />
@@ -94,6 +110,7 @@ export default class Seller extends Component {
                   name={product.name}
                   price={product.price}
                   imgLink={product.image}
+                  category={product.category}
                   handleDelete={() => this.handleDelete(product.id)}
                   handleGetDataForUpdate={() =>
                     this.handleGetDataForUpdate(product.id)
@@ -104,8 +121,6 @@ export default class Seller extends Component {
             })}
           </div>
         )}
-
-        <CombinedFooter />
       </>
     );
   }

@@ -37,10 +37,14 @@ export default class ProductCard extends Component {
   }
   render() {
 
-    const { name, price, imgLink, buttons, handleDelete, handleGetDataForUpdate, } = this.props;
+
+    const { name, price, imgLink,category, buttons, handleDelete, handleGetDataForUpdate,id } = this.props;
+
     const { addedToCart } = this.state;
+    console.log(this.props);
 
     return (
+      
       <div className="p-card ">
         <img className="product-img" src={imgLink} alt="product" />
         <div className="product-btn">
@@ -51,8 +55,17 @@ export default class ProductCard extends Component {
           
         </div>
         <div className="container">
-          <h3 className="product-name">{name}</h3>
-          <p className="product-price">${price}</p>
+
+         <div className="product-dd">
+         <h3 className="product-name" onClick={(e) => { e.preventDefault();
+          window.location.href=`/product/${id}`;}}>{name}</h3>
+                    <p className="product-category">{category}</p>
+         </div>
+
+         
+
+
+          <p className="product-price">${(+price).toFixed(0)}</p>
 
         </div>
       </div>

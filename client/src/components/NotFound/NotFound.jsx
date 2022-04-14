@@ -3,7 +3,7 @@ import React from 'react';
 import './NotFound.css'
 import { Link } from 'react-router-dom';
 
-import img from './Screenshot from 2022-04-14 02-21-39.png'
+import img from './Screenshot from 2022-04-14 03-45-07.png'
 
 
 

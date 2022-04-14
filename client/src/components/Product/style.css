@@ -44,7 +44,10 @@
   margin-right: 10px;
 
 }
-
+.product-name:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
 .container {
   display: flex;
   align-items: center;

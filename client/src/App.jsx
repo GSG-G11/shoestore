@@ -5,16 +5,20 @@ import Home from "./pages/home";
 import Seller from "./pages/seller";
 import Header from "./components/header";
 import Cart from "./pages/Cart/Cart";
+import LoginForm from "./components/Login/LoginForm";
 import ProductDet from "./pages/productDetails/ProductDet";
-import CombinedFooter from './components/Footer/CombinedFooter';
-import LoginForm from './components/Login/LoginForm';
+import CombinedFooter from "./components/Footer/CombinedFooter";
 
 class App extends Component {
   state = {
     inputSearch: "",
     itemsOfCart: 0,
+    isLoggedIn: false,
   };
 
+  handleLoggedIn = (e) => {
+    this.setState({ isLoggedIn: e });
+  };
   handleSearch = (e) => {
     this.setState({ inputSearch: e.target.value });
   };
@@ -23,20 +27,26 @@ class App extends Component {
   };
 
   render() {
-    const {changeCart, handleSearch, state:{itemsOfCart, inputSearch} } = this
+    const {
+      changeCart,
+      handleSearch,
+      state: { itemsOfCart, inputSearch },
+    } = this;
 
     return (
       <>
-      
-        <Header itemsOfCart={itemsOfCart} handleSearch={handleSearch} />
+        <Header
+          itemsOfCart={itemsOfCart}
+          handleSearch={handleSearch}
+          isLoggedIn={this.state.isLoggedIn}
+        />
         <Router>
           <Switch>
-            
-            <Route  path={'/product/:id'}>
-          <ProductDet />
-        </Route>
-        
-        {/* <Route path='/notfound'>
+            <Route path={"/product/:id"}>
+              <ProductDet />
+            </Route>
+
+            {/* <Route path='/notfound'>
           <NotFound />
         </Route>
 
@@ -48,20 +58,18 @@ class App extends Component {
           <Product />
         </Route>
     */}
-            <Route path='/login'>
-
-          <LoginForm />
-        </Route> 
+            <Route path="/login">
+              <LoginForm handleLoggedIn={this.handleLoggedIn} />
+            </Route>
             <Route exact path="/seller">
-
               <Seller />
             </Route>
 
-        <Route  path='/cart'>
-          <Cart />
-        </Route>
+            <Route path="/cart">
+              <Cart />
+            </Route>
 
-        <Route exact path='/'>
+            <Route exact path="/">
               <Home changeCart={changeCart} inputSearch={inputSearch} />
             </Route>
           </Switch>

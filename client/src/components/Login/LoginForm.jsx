@@ -1,34 +1,33 @@
 import React from "react";
-// import "./LoginForm.css";
-
+import "./LoginForm.css";
+import { Link } from "react-router-dom";
 
 class LoginForm extends React.Component {
   // const navigate = useNavigate();
   state = {
-    nameUser: "",
-    isLoggedIn: false,
+    login: "login",
   };
 
-  getNameHandler = (event) => {
-    const userValue = event.target.value;
-    this.setState({ nameUser: userValue, isLoggedIn: true });
-    localStorage.setItem(this.state.nameUser, this.state.isLoggedIn);
+  localHandler = (boolean) => {
+    const { handleLoggedIn } = this.props;
+    handleLoggedIn(boolean);
+    localStorage.setItem("loggedIn", boolean);
   };
 
   render() {
+    const logged = this.localHandler;
+    const localBoolean = localStorage.getItem("loggedIn");
     return (
       <>
-        
-        <div className="model">
-          <form className="log-in">
-            <i className="fa-solid fa-xmark icon"></i>
-
+        <div className="login__model">
+          <form className="login__form">
             <input
               type="email"
               id="email"
               className="email"
               placeholder="Enter your email"
-              onBlur={this.getNameHandler}
+              // onBlur={this.localHandler}
+              required
             />
 
             <input
@@ -38,13 +37,27 @@ class LoginForm extends React.Component {
               placeholder="Enter your password"
             />
 
-            <a
-              className="Login__btn"
-              onClick={this.getNameHandler}
-              href="/seller"
-            >
-              login
-            </a>
+            {!localBoolean ? (
+              <Link
+                onClick={() => {
+                  logged(true);
+                }}
+                to="/seller"
+                className="Login__btn"
+              >
+                LOGIN
+              </Link>
+            ) : (
+              <Link to="/login" className="Login__btn">
+                <span
+                  onClick={() => {
+                    logged(false);
+                  }}
+                >
+                  LOGOUT
+                </span>
+              </Link>
+            )}
           </form>
         </div>
       </>

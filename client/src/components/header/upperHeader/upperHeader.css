@@ -26,7 +26,7 @@
   justify-content: space-between;
   align-items: center;
 
-	  
+      
 }
 
 .logo {
@@ -96,7 +96,3 @@ input:focus {
   background-color: #ff4f04;
   font-size: 1.1rem;
 }
-/* 
-.main__search__bar{
-    color: brown;
-} */

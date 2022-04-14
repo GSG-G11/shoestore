@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/home";
 import Seller from "./pages/seller";
@@ -7,6 +7,7 @@ import CombinedFooter from './components/Footer/CombinedFooter';
 import Header from "./components/header";
 import Cart from "./pages/Cart/Cart";
 import LoginForm from './components/Login/LoginForm';
+import NotFound from "./components/NotFound/NotFound";
 
 class App extends Component {
   state = {
@@ -22,7 +23,7 @@ class App extends Component {
   };
 
   render() {
-    const {changeCart, handleSearch, state:{itemsOfCart, inputSearch} } = this
+    const { changeCart, handleSearch, state: { itemsOfCart, inputSearch } } = this
 
     return (
       <>
@@ -47,20 +48,26 @@ class App extends Component {
     */}
             <Route path='/login'>
 
-          <LoginForm />
-        </Route> 
+              <LoginForm />
+            </Route>
             <Route exact path="/seller">
 
               <Seller />
             </Route>
 
-        <Route  path='/cart'>
-          <Cart />
-        </Route>
+            <Route path='/cart'>
+              <Cart />
+            </Route>
 
-        <Route exact path='/'>
+            <Route exact path='/'>
               <Home changeCart={changeCart} inputSearch={inputSearch} />
             </Route>
+
+
+
+            <Route path='/notfound' component={NotFound} />
+              <Redirect to='/notfound' />
+
           </Switch>
         </Router>
         <CombinedFooter />

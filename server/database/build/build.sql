@@ -21,6 +21,10 @@ INSERT INTO products (name, price, description, image, category) VALUES
 ('Pink high top',160,'Japanese meow girl pink high top lolita shoes sweet round hear lace-up women shoes anime cosplay student canvas shoes 2020 new','https://alitools.io/en/showcase/image?url=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FH25765fe8e88940acae20836b9662e3adB.jpg','women'),
 ('Canvas Shoes',270,'Anime Canvas Shoes Deku Izuku Todoroki Cosplay High-Top Sneakers Made of canvas upper','https://m.media-amazon.com/images/I/61KhViF+Z7L._AC_SL1200_.jpg','women'),
 ('Stitch Shoes',67,'Stitch Shoes Custom Anime Sneakers Hand Painted Shoes Men Women Fashion Sneakers','https://www.ubuy.co.in/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvOTF0Z1g1a25lMlMuX1NMMTUwMF8uanBn.jpg','women'),
-('Sakura Shoe',145,'2020 Anime Kinomoto Sakura Cosplay Canvas Shoes Platforms w/Wings Lace Up High top Casual Shoes for Women Girls Student Flats','http://cdn.shopify.com/s/files/1/0568/3940/5775/products/product-image-1763428446_1200x1200.jpg','women');
+('Sakura Shoe',145,'2020 Anime Kinomoto Sakura Cosplay Canvas Shoes Platforms w/Wings Lace Up High top Casual Shoes for Women Girls Student Flats','http://cdn.shopify.com/s/files/1/0568/3940/5775/products/product-image-1763428446_1200x1200.jpg','women'),
+ ('kid Sneakers', 50 , ' Diable Jambe Skill One Piece Anime Shoes Fan MN06','https://www.seekpng.com/png/detail/70-702691_adidas-shoe-png-images-kids-shoes-png.png', 'kids'),
+('kid Sneakers', 80 , ' Diable Jambe Skill One Piece Anime Shoes Fan MN06','https://icon2.cleanpng.com/20180313/xcw/kisspng-adidas-ico-shoe-sneakers-icon-shoes-image-5aa7754387f9c5.597247351520923971557.jpg', 'kids'),
+('kid Sneakers', 100 , ' Diable Jambe Skill One Piece Anime Shoes Fan MN06','https://www.nicepng.com/png/full/248-2487666_kid-shoes-png-png-girls-hi-top-sneakers.png', 'kids'),
+('kid Sneakers', 150 , ' Diable Jambe Skill One Piece Anime Shoes Fan MN06','https://thumbs.dreamstime.com/b/kids-sports-shoes-isolated-white-background-stock-photos-87972278.jpg', 'kids'); 
 
 COMMIT;

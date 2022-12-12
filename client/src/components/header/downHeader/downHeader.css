@@ -31,9 +31,14 @@
   list-style-type: none;
   width: 80%;
   padding: 0 4rem;
-  justify-content: space-between;
+  
   align-items: center;
   font-weight: lighter ;
+}
+.naviagtion__menu li {
+  margin-right: 4rem;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
 
 .naviagtion__menu li:hover {

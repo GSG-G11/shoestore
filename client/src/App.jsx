@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import "./App.css";
 import Home from "./pages/home";
 import Seller from "./pages/seller";
@@ -10,6 +15,7 @@ import LoginForm from "./components/Login/LoginForm";
 import NotFound from "./components/NotFound/NotFound";
 import ProductDet from "./pages/productDetails/ProductDet";
 import CombinedFooter from "./components/Footer/CombinedFooter";
+import Map from "./components/Map";
 
 class App extends Component {
   state = {
@@ -29,13 +35,11 @@ class App extends Component {
   };
 
   render() {
-
     const {
       changeCart,
       handleSearch,
       state: { itemsOfCart, inputSearch },
     } = this;
-
 
     return (
       <>
@@ -70,20 +74,19 @@ class App extends Component {
               <Seller />
             </Route>
 
-            <Route path='/cart'>
+            <Route path="/cart">
               <Cart />
             </Route>
+            <Route path="/map">
+              <Map />
+            </Route>
 
-            <Route exact path='/'>
-
+            <Route exact path="/">
               <Home changeCart={changeCart} inputSearch={inputSearch} />
             </Route>
 
-
-
-            <Route path='/notfound' component={NotFound} />
-              <Redirect to='/notfound' />
-
+            <Route path="/notfound" component={NotFound} />
+            <Redirect to="/notfound" />
           </Switch>
         </Router>
         <CombinedFooter />
